@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Tienda de discos{% endblock title %}
+{% block content %}
+    <p class="p-2">Bienvenido a la tienda de discos!</p>
+    <div class="card-group">
+        {% for album in albums %}
+            <div class="card">
+                <img src="{{ album.picture.url }}" alt="">
+                <div class="card-body"></div>
+                <h4 class="card-title">{{ album }}</h4>
+                <p class="card-text">
+                    Título: {{ album.title }} <br>
+                    Género: {{ album.genre }}
+                </p>
+                <ul style: "float:left;">
+                    <a href="album/{{ album.id }}" class="btn btn-primary">
+                        <i class="fa-solid fa-hurricane"></i>
+                    </a>
+                    <a href="edit_album/{{ album.id }}" class="btn btn-primary">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a href="delete_album/{{ album.id }}" class="btn btn-danger">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+    <h5 class="">Artistas: </h5>
+    <div class="card-group">
+        {% for artist in artists %}
+        <div class="card mb-3 bg-light">
+            <div class="row g-0">
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h4 class="card-title">{{artist}}</h4>
+                        <p class="card-text">
+                            Nombre: {{ artist.artist_name }} <br>
+                            Ciudad de origen: {{ artist.country }}
+                            <ul style: "float:left;">
+                                <a href="artist/{{ artist.id }}" class="btn btn-primary">
+                                    <i class="fa-solid fa-hurricane"></i>
+                                <a href="edit_artist/{{ artist.id }}" class="btn btn-primary">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a href="delete_artist/{{ artist.id }}" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
